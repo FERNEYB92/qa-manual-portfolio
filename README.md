@@ -7,3 +7,7 @@ En este proyecto realicé el diseño y ejecución de casos de prueba para la pla
 
 - **Matriz de Pruebas (Google Sheets):** [Ver Matriz de Pruebas en Google Sheets] https://docs.google.com/spreadsheets/d/1X_LeaI2CIbkMwu434jeM9QvBcaTO7fkcvVSkSdJWpps/edit?usp=sharing
 - **Descripción:** Incluye el diseño de 5 casos de prueba funcionales probados en la interfaz de usuario.
+
+###  Herramientas utilizadas
+- Google Sheets (Diseño y ejecución de matriz de pruebas)
+- Git & GitHub (Control de versiones y publicación de portafolio)
