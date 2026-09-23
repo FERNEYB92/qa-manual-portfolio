@@ -12,6 +12,7 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "cypress": "^16.1.0",
     "jest": "^30.5.1",
     "jest-html-reporter": "^4.4.2",
     "supertest": "^7.2.2"
