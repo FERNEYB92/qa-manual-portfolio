@@ -1,7 +1,6 @@
 describe('Proyecto Práctico #5 - Pruebas de Login en Swag Labs', () => {
 
   beforeEach(() => {
-    // Visitar la página antes de cada prueba
     cy.visit('https://www.saucedemo.com');
   });
 
@@ -9,15 +8,18 @@ describe('Proyecto Práctico #5 - Pruebas de Login en Swag Labs', () => {
     cy.get('.login_logo').should('be.visible');
   });
 
-  it('Debe interactuar con el formulario e ingresar credenciales válidas', () => {
-    // 1. Escribir el nombre de usuario
+  it('Debe completar el login, validar redirección y tomar captura de evidencia', () => {
+    // 1. Ingresar credenciales
     cy.get('[data-test="username"]').type('standard_user');
-
-    // 2. Escribir la contraseña
     cy.get('[data-test="password"]').type('secret_sauce');
-
-    // 3. Hacer clic en el botón de Login
     cy.get('[data-test="login-button"]').click();
+
+    // 2. Validaciones post-login (Aserciones)
+    cy.url().should('include', '/inventory.html');
+    cy.get('.title').should('be.visible').and('have.text', 'Products');
+
+    // 3. Captura de pantalla automática
+    cy.screenshot('login-exitoso-swaglabs');
   });
 
 });
