@@ -1,18 +1,21 @@
-describe('Proyecto Práctico #6 - Login con Data-Driven Testing (Fixtures)', () => {
+import loginPage from '../pages/LoginPage';
+
+describe('Proyecto Práctico #6 - Login aplicando Page Object Model (POM)', () => {
 
   beforeEach(function () {
-    // Cargar el archivo de datos antes de cada prueba
     cy.fixture('users').as('userData');
-    cy.visit('https://www.saucedemo.com');
+    loginPage.visit();
   });
 
-  it('Debe realizar login consumiendo credenciales desde un Fixture JSON', function () {
-    // Acceder a los datos cargados mediante la alias 'userData'
-    cy.get('[data-test="username"]').type(this.userData.validUser.username);
-    cy.get('[data-test="password"]').type(this.userData.validUser.password);
-    cy.get('[data-test="login-button"]').click();
+  it('Debe validar que la página cargue correctamente', () => {
+    loginPage.logo.should('be.visible');
+  });
 
-    // Validación post-login
+  it('Debe realizar el login exitoso utilizando la abstracción de POM', function () {
+    // Usamos la acción encapsulada en la clase de la página
+    loginPage.login(this.userData.validUser.username, this.userData.validUser.password);
+
+    // Validaciones post-login
     cy.url().should('include', '/inventory.html');
     cy.get('.title').should('be.visible').and('have.text', 'Products');
   });
