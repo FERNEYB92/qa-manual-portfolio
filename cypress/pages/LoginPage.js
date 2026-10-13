@@ -16,28 +16,25 @@ class LoginPage {
     return cy.get('.login_logo');
   }
 
-  // 2. Acciones (Methods)
+  get inventoryTitle() {
+    return cy.get('.title');
+  }
+
+  // 2. Acciones y Métodos
   visit() {
     cy.visit('https://www.saucedemo.com');
   }
 
-  fillUsername(username) {
+  login(username, password) {
     this.usernameInput.type(username);
-  }
-
-  fillPassword(password) {
     this.passwordInput.type(password);
-  }
-
-  clickLogin() {
     this.loginButton.click();
   }
 
-  // Método compuesto para realizar el login en un solo llamado
-  login(username, password) {
-    this.fillUsername(username);
-    this.fillPassword(password);
-    this.clickLogin();
+  // Validación de ingreso exitoso
+  verifyLoginSuccess() {
+    cy.url().should('include', '/inventory.html');
+    this.inventoryTitle.should('be.visible').and('have.text', 'Products');
   }
 }
 
