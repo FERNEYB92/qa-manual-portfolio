@@ -12,6 +12,7 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@playwright/test": "^1.64.1",
     "cypress": "^16.1.0",
     "jest": "^30.5.1",
     "jest-html-reporter": "^4.4.2",
